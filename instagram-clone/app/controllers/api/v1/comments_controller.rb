@@ -2,7 +2,7 @@ class Api::V1::CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
-    render json: @like, status: 200
+    render json: @comment, status: 200
 
   end
 

@@ -7,8 +7,11 @@ Rails.application.routes.draw do
       resources :relationships
       resources :posts
       resources :users
+      resources :sessions
     end
   end
+
+
 
 end
 
