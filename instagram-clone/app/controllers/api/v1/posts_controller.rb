@@ -12,6 +12,12 @@ class Api::V1::PostsController < ApplicationController
     render json: @post, status: 200
   end
 
+  def index
+    @posts = Post.explore_feed
+    render json: @posts, status: 200
+
+  end
+
   private
 
   def post_params

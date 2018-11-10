@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post "api/v1/relationships/unfollow", to: "api/v1/relationships#unfollow", as: "unfollow"
+
   namespace :api do
     namespace :v1 do
       resources :likes

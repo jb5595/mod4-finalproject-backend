@@ -5,4 +5,8 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
 
 
+  def self.explore_feed
+    sorted  = Post.all.sort{|a,b| b.created_at <=> a.created_at}
+  end
+
 end
