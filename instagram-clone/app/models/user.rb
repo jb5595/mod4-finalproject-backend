@@ -3,6 +3,9 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments, through: :posts
+
+  has_many :bookmarked_posts
+  has_many :bookmarked_items, through: :bookmarked_posts, :source => "post"
   # Liked Posts Relationships
   has_many :likes
   has_many :liked_posts, through: :likes, :source => "posts"
@@ -34,6 +37,11 @@ class User < ApplicationRecord
    # Returns true if the current user is following the other user.
    def following?(other_user)
      self.following.include?(other_user)
+   end
+
+   def feed
+     @posts = self.following.map{|user| user.posts}
+     @posts.flatten
    end
 
 

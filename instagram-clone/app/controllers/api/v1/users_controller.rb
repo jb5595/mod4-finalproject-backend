@@ -13,9 +13,23 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def update
+    byebug
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    render json: @user, status: 200
+  end
+
   def show
     @user = User.find(params[:id])
     render json: @user, status: 200
+  end
+
+  def search
+    search_term = params[:search_term]
+    
+    @results = User.all.select{|user| user.user_name.include?(search_term)}
+    render json: @results, status: 200
   end
 
 

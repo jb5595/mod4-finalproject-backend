@@ -4,11 +4,18 @@ class Api::V1::PostsController < ApplicationController
     @post = Post.find(params[:id])
     render json: @post, status: 200
   end
-  def create
+
+  def feed
     @user = User.find(params[:user_id])
-    @post = @user.posts.build
-    @post.image = params[:image]
-    @post.save!
+    @feed = @user.feed
+    render json: @feed , status: 200
+  end
+
+  def create
+    byebug
+    # @user = User.find(params[:user_id])
+    # @post = @user.posts.build
+    @post = Post.create(post_params)
     render json: @post, status: 200
   end
 
@@ -25,6 +32,7 @@ class Api::V1::PostsController < ApplicationController
       :id,
       :image,
       :user_id,
+      :caption,
     )
   end
 

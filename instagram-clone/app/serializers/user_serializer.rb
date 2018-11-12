@@ -3,4 +3,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :posts
   has_many :followers
   has_many :following
+  has_many :bookmarked_items
 end
