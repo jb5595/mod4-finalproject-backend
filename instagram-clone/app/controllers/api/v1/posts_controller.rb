@@ -12,9 +12,6 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def create
-    byebug
-    # @user = User.find(params[:user_id])
-    # @post = @user.posts.build
     @post = Post.create(post_params)
     render json: @post, status: 200
   end

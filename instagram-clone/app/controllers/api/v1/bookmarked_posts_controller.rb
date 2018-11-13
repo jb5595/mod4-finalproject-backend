@@ -3,12 +3,12 @@ class Api::V1::BookmarkedPostsController < ApplicationController
 
   def create
     @bookmark = BookmarkedPost.create(bookmark_params)
-    render json: @bookmark, status: 200
+    render json: @bookmark.post, status: 200
   end
 
   def unbookmark
     @bookmark = BookmarkedPost.find_by(bookmark_params).destroy
-    render json: @bookmark, status: 200
+    render json: @bookmark.post, status: 200
   end
 
   private
